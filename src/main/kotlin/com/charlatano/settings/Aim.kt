@@ -35,20 +35,20 @@ var ACTIVATE_FROM_FIRE_KEY = true
  * By default, this uses the backward mouse button
  * (button 5, the button on the bottom left of gaming mice).
  */
-var FORCE_AIM_KEY = 5
+var FORCE_AIM_KEY = 17
 
 /**
  * The field of view of the aimbot, in degrees (0 to 360).
  */
-var AIM_FOV = 190
+var AIM_FOV = 100
 
 /**
  * The aimbot's "playback" speed, the higher the varue the slower the playback.
  *
  * The minimum varue is 1, and max must always be greater than min.
  */
-var AIM_SPEED_MIN = 34
-var AIM_SPEED_MAX = 37
+var AIM_SPEED_MIN = 30
+var AIM_SPEED_MAX = 34
 
 /**
  * The strictness, or "stickiness" of the aimbot; the higher the number, the
@@ -110,9 +110,9 @@ var AIM_DURATION = 1
 /**
  * The amount of sprayed shots until the aimbot shifts to aiming at the [SHOULDER_BONE].
  */
-var SHIFT_TO_SHOULDER_SHOTS = 4
+var SHIFT_TO_SHOULDER_SHOTS = 0
 
 /**
  * The amount of sprayed shots until the aimbot shifts to aiming at the [BODY_BONE].
  */
-var SHIFT_TO_BODY_SHOTS = 7
+var SHIFT_TO_BODY_SHOTS = 0
