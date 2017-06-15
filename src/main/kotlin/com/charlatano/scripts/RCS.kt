@@ -61,8 +61,8 @@ fun rcs() = every(RCS_DURATION) {
 	
 	val punch = Vector(csgoEXE.float(myAddress + vecPunch).toDouble(),
 			csgoEXE.float(myAddress + vecPunch + 4).toDouble(), 0.0).apply {
-		x *= 2.0
-		y *= 2.0
+		x *= if (RCS_MAX > RCS_MIN) randDouble(RCS_MIN, RCS_MAX) else RCS_MIN
+		y *= if (RCS_MAX > RCS_MIN) randDouble(RCS_MIN, RCS_MAX) else RCS_MIN
 		z = 0.0
 		normalize()
 	}
