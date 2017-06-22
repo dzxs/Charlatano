@@ -16,34 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.overlay.transparency.win10
 
-import com.sun.jna.Native
-import com.sun.jna.Pointer
-import com.sun.jna.platform.win32.WinDef
-
-object CUser32 {
+object AccentState {
 	
-	init {
-		Native.register("user32")
-	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
+	const val ACCENT_DISABLED = 0
+	const val ACCENT_ENABLE_GRADIENT = 1
+	const val ACCENT_ENABLE_TRANSPARENTGRADIENT = 2
+	const val ACCENT_ENABLE_BLURBEHIND = 3
+	const val ACCENT_INVALID_STATE = 4
 	
 }

@@ -16,34 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.overlay.transparency.win7
 
-import com.sun.jna.Native
-import com.sun.jna.Pointer
+import com.charlatano.overlay.transparency.TransparencyApplier
 import com.sun.jna.platform.win32.WinDef
+import com.sun.jna.platform.win32.User32.INSTANCE as User32
 
-object CUser32 {
+object Win7TransparencyApplier : TransparencyApplier {
 	
-	init {
-		Native.register("user32")
+	override fun applyTransparency(hwnd: WinDef.HWND) = DWM_BLURBEHIND().run {
+		dwFlags = WinDef.DWORD(DWM.DWM_BB_ENABLE)
+		fEnable = true
+		hRgnBlur = null
+		DWM.DwmEnableBlurBehindWindow(hwnd, this).toInt() == 0
 	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
 	
 }

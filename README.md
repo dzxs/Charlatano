@@ -29,7 +29,10 @@ free and open-source cheating software!
 
 **Beginner's Guide**
 
-Before doing anything, make sure you have Java Development Kit (JDK) 8 or later installed.
+Before doing anything, make sure you have
+[Java Development Kit (JDK) 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+or later installed. This is NOT the same thing as the regular Java Runtime (JRE), and you MUST install the JDK
+in order to build Charlatano, as well as any other Java software.
 
 The first step is to compile the source code into a usable cheat program.
 
@@ -41,10 +44,10 @@ The first step is to compile the source code into a usable cheat program.
 * Double click on the "_build_" (_build.bat_) script and wait for it to complete
 
 Once those steps are complete, the usable cheat program can be found within the _build_
-directory, and will in a directory called **Charlatano 1.0.3**.
+directory, and will in a directory called **Charlatano 1.0.5**.
 
-From within the **Charlatano 1.0.3** directory, you can start the cheat by running
-the _"Start Charlatano 1.0.3"_ script.
+From within the **Charlatano 1.0.5** directory, you can start the cheat by running
+the _"Start Charlatano 1.0.5"_ script.
 
 Before starting the cheat, you should already be spawned in a game with a weapon in hand!
 

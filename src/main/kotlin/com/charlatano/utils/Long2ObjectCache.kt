@@ -16,34 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.utils
 
-import com.sun.jna.Native
-import com.sun.jna.Pointer
-import com.sun.jna.platform.win32.WinDef
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap
 
-object CUser32 {
-	
-	init {
-		Native.register("user32")
-	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
-	
+inline fun <T, R> Long.readCached(cache: Long2ObjectMap<T>, crossinline construct: () -> T,
+                                  crossinline read: T.(Long) -> R): T {
+	val t: T =
+			if (cache.containsKey(this))
+				cache.get(this)
+			else {
+				val t_ = construct()
+				cache.put(this, t_)
+				t_
+			}
+	t.read(this)
+	return t
 }

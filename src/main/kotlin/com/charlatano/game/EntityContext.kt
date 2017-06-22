@@ -16,34 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.game
 
-import com.sun.jna.Native
-import com.sun.jna.Pointer
-import com.sun.jna.platform.win32.WinDef
+import com.charlatano.game.entity.Entity
+import com.charlatano.game.entity.EntityType
 
-object CUser32 {
+data class EntityContext(var entity: Entity = -1, var glowAddress: Entity = -1,
+                         var glowIndex: Int = -1, var type: EntityType = EntityType.NULL) {
 	
-	init {
-		Native.register("user32")
+	fun set(entity: Entity, glowAddress: Entity, glowIndex: Int, type: EntityType) = apply {
+		this.entity = entity
+		this.glowAddress = glowAddress
+		this.glowIndex = glowIndex
+		this.type = type
 	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
 	
 }

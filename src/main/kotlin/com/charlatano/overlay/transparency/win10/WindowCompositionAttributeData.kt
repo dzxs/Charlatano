@@ -16,34 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.overlay.transparency.win10
 
-import com.sun.jna.Native
 import com.sun.jna.Pointer
-import com.sun.jna.platform.win32.WinDef
+import com.sun.jna.Structure
+import org.jire.arrowhead.Struct
 
-object CUser32 {
+class WindowCompositionAttributeData : Struct(), Structure.ByReference {
 	
-	init {
-		Native.register("user32")
-	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
+	@JvmField var Attribute: Int = 0
+	@JvmField var Data: Pointer? = null
+	@JvmField var SizeOfData: Int = 0
 	
 }

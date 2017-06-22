@@ -16,34 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.charlatano.utils.natives
+package com.charlatano.overlay.transparency.win7
 
-import com.sun.jna.Native
-import com.sun.jna.Pointer
 import com.sun.jna.platform.win32.WinDef
+import org.jire.arrowhead.Struct
 
-object CUser32 {
+class DWM_BLURBEHIND : Struct() {
 	
-	init {
-		Native.register("user32")
-	}
-	
-	@JvmStatic
-	external fun GetClientRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun GetCursorPos(p: Pointer): Int
-	
-	@JvmStatic
-	external fun FindWindowA(lpClassName: String?, lpWindowName: String): WinDef.HWND
-	
-	@JvmStatic
-	external fun GetForegroundWindow(): Long
-	
-	@JvmStatic
-	external fun GetWindowRect(hWnd: Pointer, rect: Pointer): Int
-	
-	@JvmStatic
-	external fun mouse_event(dwFlags: Int, dx: Int, dy: Int, dwData: Int, dwExtraInfo: Long)
+	@JvmField var dwFlags: WinDef.DWORD? = null
+	@JvmField var fEnable = false
+	@JvmField var hRgnBlur: WinDef.HRGN? = null
+	@JvmField var fTransitionOnMaximized = false
 	
 }
